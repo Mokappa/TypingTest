@@ -1,1 +1,1 @@
-mokappa.github.io/TypingTest
+https://mokappa.github.io/TypingTest/
