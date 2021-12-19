@@ -46,7 +46,7 @@ window.addEventListener('keyup', event => {
         inputText.value = ''
     }
     
-    if(event.code === "Space" && isFocus && inputText.value.trim().length) { //Trims the string of white spaces from the value > 0 ('  ' -> '')
+    if(event.which === 229 || event.which === 32 && isFocus && inputText.value.trim().length) { //Trims the string of white spaces from the value > 0 ('  ' -> '')
         let wordStore = inputText.value.split(' ')
         inputText.value = wordStore[1]
         
