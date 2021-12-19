@@ -45,13 +45,24 @@ window.addEventListener('keyup', event => {
     if(!inputText.value.trim().length) {
         inputText.value = ''
     }
-    
-    if(event.which === 229 || event.which === 32 && isFocus && inputText.value.trim().length) { //Trims the string of white spaces from the value > 0 ('  ' -> '')
-        let wordStore = inputText.value.split(' ')
-        inputText.value = wordStore[1]
-        
-        ++ currentWordNumber
-        selectThisWord(currentWordNumber, wordStore[0])
+
+    if(deviceType() === 'tablet' || deviceType() === 'mobile') {
+        if(event.which === 229 && isFocus && inputText.value.trim().length) { //Trims the string of white spaces from the value > 0 ('  ' -> '')
+            let wordStore = inputText.value.split(' ')
+            inputText.value = wordStore[1]
+            
+            ++ currentWordNumber
+            selectThisWord(currentWordNumber, wordStore[0])
+        }
+    }
+    else {
+        if(event.which === 32 && isFocus && inputText.value.trim().length) { //Trims the string of white spaces from the value > 0 ('  ' -> '')
+            let wordStore = inputText.value.split(' ')
+            inputText.value = wordStore[1]
+            
+            ++ currentWordNumber
+            selectThisWord(currentWordNumber, wordStore[0])
+        }
     }
 })
 
@@ -207,4 +218,17 @@ function onFocus() {
 
 function onBlur() {
     isFocus = false
+}
+
+
+// Test if mobile or computer (Taken from stackoverflow)
+function deviceType() {
+    if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(navigator.userAgent)) {
+        return "tablet"
+    }
+    else if (/Mobile|Android|iP(hone|od)|IEMobile|BlackBerry|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(navigator.userAgent)) {
+        return "mobile"
+    }
+
+    return "desktop"
 }
