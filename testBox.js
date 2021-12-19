@@ -4,7 +4,7 @@ let myArray = ["rural", "wonderful", "wary", "fast", "desk", "outstanding", "ent
 function SortWords() {
     for(let i = 0; i <= myArray.length; ++ i) {
         let newSpan = document.createElement('span')
-        document.querySelector('#test-box-text').appendChild(newSpan)
+        document.querySelector('#textSpanAppear').appendChild(newSpan)
 
         newSpan.innerHTML = myArray[Math.floor(Math.random() * myArray.length)]
     }
@@ -14,21 +14,21 @@ SortWords()
 
 
 // Declaration
-let testBoxText = document.querySelector('#test-box-text')
-let timerText = document.querySelector('#timer-text')
-let scoreCointainer = document.querySelector('#score')
-let scoreWPM = document.querySelector('#score-wpm')
-let inputText = document.querySelector('#write-box')
+let testBox = document.querySelector('#textBox')
+let testBoxText = document.querySelector('#textSpanAppear')
+let inputText = document.querySelector('#writeBox')
+let timerText = document.querySelector('#timerText')
+let scoreCointainer = document.querySelector('#scoreText')
+let scoreWPM = document.querySelector('#scoreWPM')
 let bubble = document.querySelector('#ballMoving')
-let testBox = document.querySelector('#test-box')
 
 let userScore = 0
 let gameStart = false
 let isFocus = false
 
 let currentWordNumber = 1
-let currentWord = document.querySelector(`#test-box-text span:nth-child(${currentWordNumber})`)
-currentWord.classList.add('current-word')
+let currentWord = document.querySelector(`#textSpanAppear span:nth-child(${currentWordNumber})`)
+currentWord.classList.add('currentWord')
 
 
 // Start Game
@@ -55,30 +55,32 @@ window.addEventListener('keyup', event => {
     }
 })
 
+
 // Word selected and previous add class
 function selectThisWord(currWordNumber, wordStore) {
-    if(document.querySelector(`#test-box-text span:nth-child(${currentWordNumber})`).offsetTop + 30 > testBox.offsetHeight) {
-        document.querySelector('#test-box-text').innerHTML = ''
+    if(document.querySelector(`#textSpanAppear span:nth-child(${currentWordNumber})`).offsetTop + 30 > testBox.offsetHeight) {
+        document.querySelector('#textSpanAppear').innerHTML = ''
         SortWords()
 
         currentWordNumber = 1
-        currentWord = document.querySelector(`#test-box-text span:nth-child(${currentWordNumber})`)
-        currentWord.classList.add('current-word')
+        currentWord = document.querySelector(`#textSpanAppear span:nth-child(${currentWordNumber})`)
+        currentWord.classList.add('currentWord')
     }
     else {
-        let prevWord = document.querySelector(`#test-box-text span:nth-child(${currWordNumber - 1})`)
-        prevWord.classList.remove('current-word')
-        prevWord.classList.remove('wrong-word')
+        let prevWord = document.querySelector(`#textSpanAppear span:nth-child(${currWordNumber - 1})`)
+        prevWord.classList.remove('currentWord')
+        prevWord.classList.remove('wrongWord')
 
         bubble.classList.add('currentBubble')
         bubble.classList.remove('wrongBubble')
 
-        currentWord = document.querySelector(`#test-box-text span:nth-child(${currWordNumber})`)
-        currentWord.classList.add('current-word')
+        currentWord = document.querySelector(`#textSpanAppear span:nth-child(${currWordNumber})`)
+        currentWord.classList.add('currentWord')
 
         shouldUserScore(wordStore, prevWord)
     }
 }
+
 
 // Test if user scored
 function shouldUserScore(userInput, prevWord) {
@@ -93,6 +95,7 @@ function shouldUserScore(userInput, prevWord) {
     }
 }
 
+
 // Test if word typed wrong, red background appears
 inputText.addEventListener('input', () => {
     let cevaMergi = currentWord.innerText // Take text from span
@@ -100,16 +103,16 @@ inputText.addEventListener('input', () => {
 
     // Adding Wrong Class (Red)
     if(!cevaMergi.startsWith(character[0])) {
-        currentWord.classList.add('wrong-word')
-        currentWord.classList.remove('current-word')
+        currentWord.classList.add('wrongWord')
+        currentWord.classList.remove('currentWord')
 
         bubble.classList.add('wrongBubble')
         bubble.classList.remove('currentBubble')
     }
     // Removing Wrong Class (White)
     else {
-        currentWord.classList.add('current-word')
-        currentWord.classList.remove('wrong-word')
+        currentWord.classList.add('currentWord')
+        currentWord.classList.remove('wrongWord')
 
         bubble.classList.add('currentBubble')
         bubble.classList.remove('wrongBubble')

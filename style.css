@@ -12,9 +12,20 @@ body {
     height: 100vh;
 }
 
+#backgroundBlur {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    background: rgba(255, 255, 255, 0.2);
+    filter: blur(50px);
+    z-index: -1;
+    overflow: hidden;
+}
 
 
-#timer-text {
+/* Timer + Score text */
+#timerText {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -27,7 +38,7 @@ body {
     color: rgba(0, 0, 0, 0.5);
 }
 
-#score {
+#scoreText {
     display: none;
     position: absolute;
     left: 50%;
@@ -43,8 +54,7 @@ body {
 }
 
 
-
-
+/* Typing Test + Write Box */
 .centerBoxes {
     display: flex;
     align-items: center;
@@ -54,7 +64,7 @@ body {
     overflow: hidden;
 }
 
-#test-box {
+#textBox {
     width: 85%;
     height: 27%;
     border-radius: 5px;
@@ -71,27 +81,20 @@ body {
     position: relative;
 }
 
-#test-box-text span {
+#textSpanAppear span {
     border-radius: 3px;
     padding: 10px;
     display: inline-block;
 }
 
-.current-word {
-    background: #dddddd;
-}
-
-.wrong-word {
-    background: #d40c0c;
-}
-
+/* Write Box */
 form {
     width: 100%;
     display: flex;
     align-items: center;
 }
 
-#write-box {
+#writeBox {
     font-size: 30px;
     padding: 20px;
     width: 70%;
@@ -104,20 +107,17 @@ form {
     outline: none;
 }
 
-
-
-
-#backgroundBlur {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    background: rgba(255, 255, 255, 0.2);
-    filter: blur(50px);
-    z-index: -1;
-    overflow: hidden;
+/* Span Word background */
+.currentWord {
+    background: #dddddd;
 }
 
+.wrongWord {
+    background: #d40c0c;
+}
+
+
+/* Helper Ball */
 #ballMoving {
     height: 400px;
     width: 400px;
@@ -138,14 +138,14 @@ form {
 }
 
 
-
+/* Mobile Responsive */
 @media screen and (max-width: 1280px) {
     body {
         overflow: hidden;
         height: 100vh;
     }
 
-    #timer-text {
+    #timerText {
         position: absolute;
         left: 50%;
         top: 20%;
@@ -154,20 +154,20 @@ form {
         filter: blur(3px);
     }
     
-    #score {
+    #scoreText {
         font-size: 70px;
         filter: blur(3px);
     }
     
     
     
-    #test-box {
+    #textBox {
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
         font-size: 20px;
         padding: 0 30px 0 30px;
     }
     
-    #write-box {
+    #writeBox {
         font-size: 20px;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     }
@@ -178,10 +178,6 @@ form {
         filter: blur(10px);
     }
 }
-
-
-
-
 
 
 /* Blob Animation Bubbly */

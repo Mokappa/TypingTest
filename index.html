@@ -5,33 +5,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Typing Test</title>
 
+    <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
-    <div id="timer-text">1:00</div>
+    <!-- Blur effect background -->
+    <div id="backgroundBlur"></div>
 
-    <div id="score"><span id="score-wpm"></span></p></div>
+
+    <!-- Timer text + Score text -->
+    <div id="timerText">1:00</div>
+
+    <div id="scoreText">
+        <span id="scoreWPM"></span>
+    </div>
     
+
+    <!-- Typing Test Box -->
     <div class="centerBoxes">
-        <div id="test-box">
-            <div id="test-box-text">
+        <!-- Div with text elements -->
+        <div id="textBox">
+            <div id="textSpanAppear">
             </div>
         </div>
         
+        <!-- Input where you type -->
         <form onsubmit="return false">
-            <input  id="write-box" onkeyup="inputType()" onfocus="onFocus()" onblur="onBlur()" type="text">
+            <input  id="writeBox" onkeyup="inputType()" onfocus="onFocus()" onblur="onBlur()" type="text">
         </form>
     </div>
         
-    <div id="backgroundBlur"></div>
 
-    <div id="ballMoving" class="currentBubble">
+    <!-- Helper Ball -->
+    <div id="ballMoving" class="currentBubble"></div>
 
-    </div>
 
+    <!-- Scripts -->
     <script type="text/javascript" src="testBox.js"></script>
 </body>
 
