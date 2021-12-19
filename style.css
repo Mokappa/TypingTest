@@ -1,0 +1,213 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    user-select: none;
+}
+
+body {
+    background: linear-gradient(to right top, #7eabdf, #22376e);
+    overflow: hidden;
+    height: 100vh;
+}
+
+
+
+#timer-text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 900px;
+    text-align: center;
+    z-index: -99;
+    filter: blur(5px);
+    transition: opacity 0.25s ease-out;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+#score {
+    display: none;
+    position: absolute;
+    left: 50%;
+    bottom: 5%;
+    transform: translate(-50%, 0);
+    text-align: center;
+    font-size: 200px;
+    z-index: -9;
+    opacity: 0;
+    filter: blur(5px);
+    transition: opacity 0.25s ease-in;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+
+
+
+.centerBoxes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+#test-box {
+    width: 85%;
+    height: 27%;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 22px 30px;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+#test-box-text span {
+    border-radius: 3px;
+    padding: 10px;
+    display: inline-block;
+}
+
+.current-word {
+    background: #dddddd;
+}
+
+.wrong-word {
+    background: #d40c0c;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#write-box {
+    font-size: 30px;
+    padding: 20px;
+    width: 70%;
+    height: 50%;
+    margin: 50px auto 0 auto;
+    border-radius: 5px;
+    border: none;
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    outline: none;
+}
+
+
+
+
+#backgroundBlur {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    background: rgba(255, 255, 255, 0.2);
+    filter: blur(50px);
+    z-index: -1;
+    overflow: hidden;
+}
+
+#ballMoving {
+    height: 400px;
+    width: 400px;
+    position: absolute;
+    opacity: 0;
+    z-index: -10;
+    filter: blur(25px);
+    transition: top 10s ease-in-out, left 10s ease-in-out, background 0.5s, opacity 0.5s ease-in;
+    animation: BlobMoving 15s ease-in-out infinite alternate;
+}
+
+.currentBubble {
+    background: #ffffff;
+}
+
+.wrongBubble {
+    background: #e70b0b;
+}
+
+
+
+@media screen and (max-width: 1280px) {
+    body {
+        overflow: hidden;
+        height: 100vh;
+    }
+
+    #timer-text {
+        position: absolute;
+        left: 50%;
+        top: 20%;
+        transform: translate(-50%, -50%);
+        font-size: 100px;
+        filter: blur(3px);
+    }
+    
+    #score {
+        font-size: 70px;
+        filter: blur(3px);
+    }
+    
+    
+    
+    #test-box {
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        font-size: 20px;
+        padding: 0 30px 0 30px;
+    }
+    
+    #write-box {
+        font-size: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    #ballMoving {
+        height: 100px;
+        width: 100px;
+        filter: blur(10px);
+    }
+}
+
+
+
+
+
+
+/* Blob Animation Bubbly */
+@keyframes BlobMoving {
+    0% {
+        border-radius: 68% 32% 43% 57% / 35% 59% 85% 61%;
+        transform: rotate(40deg);
+    }
+
+    25% {
+        border-radius: 32% 43% 86% 42% / 35% 43% 65% 37%;
+        transform: rotate(10deg);
+    }
+
+    50% {
+        border-radius: 45% 56% 33% 73% / 43% 74% 65% 26%;
+        transform: rotate(30deg);
+    }
+
+    75% {
+        border-radius: 67% 21% 87% 44% / 35% 15% 83% 61%;
+        transform: rotate(60deg);
+    }
+    
+    100% {
+        border-radius: 52% 53% 36% 74% / 96% 46% 75% 61%;
+        transform: rotate(40deg);
+    }
+}
