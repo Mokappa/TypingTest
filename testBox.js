@@ -41,12 +41,12 @@ function inputType() {
 
 
 // Text Input
-window.addEventListener('keyup', event => {
-    if(!inputText.value.trim().length) {
+window.addEventListener('keyup', function (event) {
+    if(inputText.value.indexOf(' ') === 0) {
         inputText.value = ''
     }
     // event.target.value.charAt(event.target.selectionStart - 1).charCodeAt() === 32
-
+    
     if(inputText.value.indexOf(' ') > 0 && isFocus && inputText.value.trim().length) { //Trims the string of white spaces from the value > 0 ('  ' -> '')
         let wordStore = inputText.value.split(' ')
         inputText.value = wordStore[1]
@@ -98,7 +98,7 @@ function shouldUserScore(userInput, prevWord) {
 
 
 // Test if word typed wrong, red background appears
-inputText.addEventListener('input', () => {
+inputText.addEventListener('input', function () {
     let cevaMergi = currentWord.innerText // Take text from span
     let character = inputText.value.split(' ') // Splits the input value when finding space
 
@@ -160,7 +160,7 @@ function startTimer(duration, elem) {
     let minutes
     let seconds
 
-    let tick = setInterval(() => {
+    let tick = setInterval(function () {
         minutes = parseInt(timer / 60)
         seconds = parseInt(timer % 60)
         
